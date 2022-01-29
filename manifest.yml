@@ -1,0 +1,11 @@
+modules:
+  macro:
+    - key: word-count
+      function: main
+      title: word-count
+      description: It counts words!
+  function:
+    - key: main
+      handler: index.run
+app:
+  id: ari:cloud:ecosystem::app/269ceb79-d1c0-4e85-8687-c17b4ffd4c3e
