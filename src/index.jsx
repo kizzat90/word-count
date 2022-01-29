@@ -3,7 +3,6 @@ import ForgeUI, { render, Fragment, Macro, Text, TextArea, Form, useState, Radio
 const App = () => { 
   const [input, setInput] = useState("");
   const [wordMap, setWordMap] = useState(new Map());
-  const [mapSize, setMapSize] = useState(0);
 
   const onSubmit= async (formData) => {
     //Extracts all from formData
@@ -52,7 +51,6 @@ const App = () => {
     //Sets values into useState
     setInput(formDataInput);
     setWordMap(map);
-    setMapSize(map.size);
   }
 
 
@@ -71,7 +69,6 @@ const App = () => {
       </Form>
       <SectionMessage title="You entered:" appearance="confirmation">
         <Text>{input}</Text>
-        <Text>{mapSize}</Text>
       </SectionMessage>
       <Table>
         <Head>
