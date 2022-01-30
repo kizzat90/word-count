@@ -1,4 +1,4 @@
-import ForgeUI, { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row, useEffect } from "@forge/ui";
+import { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row } from "@forge/ui";
 
 const App = () => { 
   const [input, setInput] = useState("");
@@ -24,33 +24,34 @@ const App = () => {
       }
     }
 
-    //BUG: Sort is not working (WIP)
+    //Sorts by word or count, by ascending or descending order
+    let sortedMap = new Map();
     if(sort === "sortWord")
     {
-      if(order === "OrderByAscending")
+      if(order === "orderByAscending")
       {
-        Object.keys(...map).sort((a, b) => a - b);
+        sortedMap = new Map([...map.entries()].sort());
       }
-      else if(order === "OrderByDescending")
+      else if(order === "orderByDescending")
       {
-        Object.keys(...map).sort((a, b) => b - a);
+        sortedMap = new Map([...map.entries()].sort().reverse());
       }
     }
     else if(sort === "sortCount")
     {
-      if(order === "OrderByAscending")
+      if(order === "orderByAscending")
       {
-        Object.values(...map).sort((a,b) =>  a - b);
+        sortedMap = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
       }
-      else if(order === "OrderByDescending")
+      else if(order === "orderByDescending")
       {
-        Object.values(...map).sort((a,b) =>  b - a);
+        sortedMap = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
       }
     }
 
     //Sets values into useState
     setInput(formDataInput);
-    setWordMap(map);
+    setWordMap(sortedMap);
   }
 
 
@@ -63,8 +64,8 @@ const App = () => {
           <Radio label="Count" name="count" value="sortCount"></Radio>
         </RadioGroup>
         <RadioGroup label="Sort order by" name="order">
-          <Radio defaultChecked label="Ascending" name="ascending" value="OrderByAscending"></Radio>
-          <Radio label="Descending" name="descending" value="OrderByDescending"></Radio>
+          <Radio defaultChecked label="Ascending" name="ascending" value="orderByAscending"></Radio>
+          <Radio label="Descending" name="descending" value="orderByDescending"></Radio>
         </RadioGroup>
       </Form>
       <SectionMessage title="You entered:" appearance="confirmation">
