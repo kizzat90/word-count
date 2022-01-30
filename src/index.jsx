@@ -1,4 +1,4 @@
-import { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row } from "@forge/ui";
+import ForgeUI, { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row } from "@forge/ui";
 
 const App = () => { 
   const [input, setInput] = useState("");
