@@ -57,7 +57,7 @@ const App = () => {
 
   return (
     <Fragment>
-      <Form onSubmit={onSubmit} submitButtonText="Let's start counting!">
+      <Form onSubmit={onSubmit} submitButtonText="Let's start counting!" submitButtonAppearance="primary">
         <TextArea label="Your input field *" name="input"></TextArea>
         <RadioGroup label="Sort results by" name="sort">
           <Radio defaultChecked label="Word" name="word" value="sortWord"></Radio>
