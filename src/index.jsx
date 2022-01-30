@@ -1,4 +1,4 @@
-import ForgeUI, { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row } from "@forge/ui";
+import ForgeUI, { render, Fragment, Macro, Text, TextArea, Form, useState, RadioGroup, Radio, SectionMessage, Table, Head, Cell, Row, Heading } from "@forge/ui";
 
 const App = () => { 
   const [input, setInput] = useState("");
@@ -58,7 +58,8 @@ const App = () => {
   return (
     <Fragment>
       <Form onSubmit={onSubmit} submitButtonText="Let's start counting!" submitButtonAppearance="primary">
-        <TextArea label="Your input field *" name="input"></TextArea>
+        <Heading size="large">Word counter macro for confluence cloud</Heading>
+        <TextArea label="Your input field" name="input" isRequired="true"></TextArea>
         <RadioGroup label="Sort results by" name="sort">
           <Radio defaultChecked label="Word" name="word" value="sortWord"></Radio>
           <Radio label="Count" name="count" value="sortCount"></Radio>
